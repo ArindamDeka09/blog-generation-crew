@@ -1,0 +1,25 @@
+blog_writing_task:
+  description: >
+    Conduct deep, comprehensive research and generate an extensive, long-form, multi-section 
+    blog post on the topic: {topic}. 
+    
+    The final blog post MUST be highly detailed, thorough, and at least 1,500 words long. 
+    Do not summarize concepts; dive deep into detailed explanations and comprehensive data science rationale.
+    
+    The content workflow must incorporate these strict structural requirements:
+    1. A catchy, informative main title.
+    2. Fun facts specifically relevant to {topic}.
+    3. Diverse emojis integrated naturally to make the tone engaging for young professionals and data enthusiasts.
+    4. At least three distinct, highly detailed real-world analogies to explain complex data science methodologies in a relatable way.
+    5. Detailed individual sections exploring definition, critical historical or modern importance, practical industry use-cases, and prominent technical challenges/limitations.
+    
+    The content generation breakdown per agent is as follows:
+    - Research Agent: Scrape, curate, and assemble an exhaustive context report containing verifiable facts, research data links, and industry case studies about {topic}.
+    - Blog Writing Agent: Take the comprehensive research report and draft an exhaustive, highly engaging, expansive, and deep long-form blog article. Ensure extensive narrative paragraphs are written for each section to comfortably meet the length requirement.
+    - Blog Review Agent: Review the generated draft specifically for structural layout depth, vocabulary clarity, fun tone execution, and rich analogy inclusion. Provide constructive critique or additions to maximize depth before completion.
+  expected_output: >
+    A beautifully structured, highly detailed, and extensive long-form markdown file containing:
+    - A main level-1 header (#) for the Title.
+    - Multiple descriptive level-2 headers (##) and level-3 headers (###) separating each analytical section.
+    - Clean bulleted lists, bolded key phrases, and comprehensive multi-paragraph explanations under each heading.
+    - Forceful use of double-line breaks (\n\n) between paragraphs to guarantee distinct rendering.
