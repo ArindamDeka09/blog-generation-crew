@@ -1,54 +1,41 @@
-# BlogGenerationCrew Crew
+# 🤖 Multi-Agent AI Blog Generation Crew 
 
-Welcome to the BlogGenerationCrew Crew project, powered by [crewAI](https://crewai.com). This template is designed to help you set up a multi-agent AI system with ease, leveraging the powerful and flexible framework provided by crewAI. Our goal is to enable your agents to collaborate effectively on complex tasks, maximizing their collective intelligence and capabilities.
+Welcome to the **BlogGenerationCrew** project. This is a production-grade, multi-agent AI system engineered using the **CrewAI** framework. It leverages a hierarchical management structure to orchestrate autonomous agents that research, draft, and review long-form technical content.
 
-## Installation
+Unlike standard templates, this repository has been optimized to handle complex, high-density reasoning loops entirely through free-tier **NVIDIA NIM** infrastructure, bypassing common token-ceiling and gateway connection limits.
 
-Ensure you have Python >=3.10 <3.14 installed on your system. This project uses [UV](https://docs.astral.sh/uv/) for dependency management and package handling, offering a seamless setup and execution experience.
+---
 
-First, if you haven't already, install uv:
+## 🧠 System Architecture & Workflow
 
+This project implements a **Hierarchical Process** (`Process.hierarchical`) to mimic a real-world corporate data operations team:
+
+1. **Team Leader (Crew Manager):** Ingests the global assignment topic, dynamically establishes a project roadmap, structures tasks, and handles serialization loops.
+2. **Expert Researcher:** Consumes a custom RAG-driven `SerperDevTool` to search the live web, parsing snippets and chunking complex datasets before passing data back.
+3. **Expert Blog Writer:** Transforms raw research packets into an expansive, detailed, long-form draft.
+4. **Expert Blog Reviewer:** Acts as a quality assurance gate, evaluating structure, tone, and analogies, providing structural feedback scores before finalizing production.
+
+---
+
+## ⚡ Features & Engineering Optimizations
+
+* **NVIDIA NIM Integration:** Configured natively to route high-density operations through `meta/llama-3.1-70b-instruct`.
+* **Self-Healing Parsing:** Integrated resilient schema error catching to gracefully recover from transient multi-agent JSON parsing anomalies (`Action Input key-value` slips).
+* **Gateway Timeout Buffers:** Tailored underlying HTTP transport socket boundaries (`connect_timeout` and `read_timeout` mapped to 600s) to fully mitigate cloud `504 Gateway Timeout` loops during deep context processing.
+* **Extended Token Runways:** Pushed generative runtime horizons (`max_tokens=4000`) to unlock comprehensive, 1,500+ word output generation.
+
+---
+
+## 🛠️ Installation & Setup
+
+### 1. Prerequisites
+Ensure you have Python `3.10` up to `3.12` installed. This project uses `uv` for lightning-fast, isolated dependency management.
+
+### 2. Clone and Install Dependencies
 ```bash
-pip install uv
-```
+# Clone the repository
+git clone [https://github.com/ArindamDeka09/blog-generation-crew.git](https://github.com/ArindamDeka09/blog-generation-crew.git)
+cd blog-generation-crew
 
-Next, navigate to your project directory and install the dependencies:
-
-(Optional) Lock the dependencies and install them by using the CLI command:
-```bash
-crewai install
-```
-### Customizing
-
-**Add your `OPENAI_API_KEY` into the `.env` file**
-
-- Modify `src/blog_generation_crew/config/agents.yaml` to define your agents
-- Modify `src/blog_generation_crew/config/tasks.yaml` to define your tasks
-- Modify `src/blog_generation_crew/crew.py` to add your own logic, tools and specific args
-- Modify `src/blog_generation_crew/main.py` to add custom inputs for your agents and tasks
-
-## Running the Project
-
-To kickstart your crew of AI agents and begin task execution, run this from the root folder of your project:
-
-```bash
-$ crewai run
-```
-
-This command initializes the blog-generation-crew Crew, assembling the agents and assigning them tasks as defined in your configuration.
-
-This example, unmodified, will run the create a `report.md` file with the output of a research on LLMs in the root folder.
-
-## Understanding Your Crew
-
-The blog-generation-crew Crew is composed of multiple AI agents, each with unique roles, goals, and tools. These agents collaborate on a series of tasks, defined in `config/tasks.yaml`, leveraging their collective skills to achieve complex objectives. The `config/agents.yaml` file outlines the capabilities and configurations of each agent in your crew.
-
-## Support
-
-For support, questions, or feedback regarding the BlogGenerationCrew Crew or crewAI.
-- Visit our [documentation](https://docs.crewai.com)
-- Reach out to us through our [GitHub repository](https://github.com/joaomdmoura/crewai)
-- [Join our Discord](https://discord.com/invite/X4JWnZnxPb)
-- [Chat with our docs](https://chatg.pt/DWjSBZn)
-
-Let's create wonders together with the power and simplicity of crewAI.
+# Install litellm and project dependencies using uv
+uv sync
